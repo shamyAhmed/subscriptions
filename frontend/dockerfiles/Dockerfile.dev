@@ -1,0 +1,23 @@
+from node:25
+
+shell ["/bin/bash", "-c"]
+
+arg PNPM_HOME="/pnpm"
+
+env PNPM_HOME=${PNPM_HOME}
+env PATH="$PNPM_HOME:$PATH"
+env VITE_PORT=3000
+
+run wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+
+workdir /app
+
+copy package.json pnpm-lock.yaml .
+
+run pnpm install
+
+copy . .
+
+expose 3000
+
+cmd ["pnpm", "dev", "--host"]

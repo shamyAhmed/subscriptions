@@ -1,0 +1,16 @@
+services:
+  pnpm:
+    build:
+      context: ./frontend
+      dockerfile: ./dockerfiles/Dockerfile.pnpm
+    volumes:
+      - ./frontend:/app
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./dockerfiles/Dockerfile.dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules

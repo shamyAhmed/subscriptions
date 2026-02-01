@@ -1,0 +1,28 @@
+# VCS
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Node / PNPM / Vite outputs
+node_modules
+.pnpm-store
+dist
+dist-ssr
+.vite
+.cache
+coverage
+*.log

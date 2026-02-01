@@ -1,0 +1,48 @@
+# VCS
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Node / PNPM / Vite
+**/node_modules
+**/.pnpm-store
+**/dist
+**/dist-ssr
+**/.vite
+**/.cache
+**/coverage
+**/*.log
+
+# Python / Flask
+**/__pycache__
+**/*.py[cod]
+**/*$py.class
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache
+**/.tox
+**/.nox
+**/.coverage
+**/.coverage.*
+**/htmlcov
+**/.venv
+**/venv
+**/env
+**/*.egg-info
+**/build
+**/dist
+instance
