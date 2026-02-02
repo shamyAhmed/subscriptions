@@ -1,0 +1,25 @@
+# Core
+Flask
+python-dotenv
+
+# REST / HTTP
+flask-cors
+
+# Database / ORM / migrations
+SQLAlchemy
+Flask-SQLAlchemy
+Flask-Migrate
+
+# Validation / serialization
+marshmallow
+# marshmallow-sqlalchemy
+# flask-marshmallow
+
+# OpenAPI / REST helpers
+flask-smorest
+
+# Auth
+Flask-JWT-Extended
+
+# Postgres driver
+psycopg2
