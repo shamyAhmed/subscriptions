@@ -12,7 +12,7 @@ def create_app(config=Config):
 
     @app.route("/")
     def hello_world():
-        return "Hello!";
+        return "Hello test!";
 
     @app.route("/create_user", methods=["POST"])
     def create_user():
