@@ -1,6 +1,7 @@
 from flask import Flask;
 from application.config import Config;
 from application.extensions import register_db;
+from models.utils.user_utils import create_single_user;
 
 def create_app(config=Config): 
     app = Flask(__name__);
@@ -11,6 +12,10 @@ def create_app(config=Config):
 
     @app.route("/")
     def hello_world():
-        return "Hello world!";
+        return "Hello!";
+
+    @app.route("/create_user", methods=["POST"])
+    def create_user():
+        return "hello world!";
     
     return app;

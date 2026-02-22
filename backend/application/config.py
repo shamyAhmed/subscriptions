@@ -1,10 +1,9 @@
 from dotenv import load_dotenv;
-import os;
+from application.utils import get_env;
 
 load_dotenv();
-env = lambda x: os.environ.get(x);
 
 class Config:
-    SECRET_KEY = env("SECRET");
-    SQLALCHEMY_DATABASE_URI = env("DATABASE_URL");
-    DEBUG = env("DEBUG")
+    SECRET_KEY = get_env("SECRET");
+    SQLALCHEMY_DATABASE_URI = get_env("DATABASE_URL");
+    DEBUG = get_env("DEBUG")

@@ -1,9 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import DeclarativeBase, MappedAsDataclass
 from flask import Flask;
 from flask_migrate import Migrate; 
 
-class Base(DeclarativeBase):
+class Base(DeclarativeBase, MappedAsDataclass):
     pass;
 
 db = SQLAlchemy(model_class=Base);
