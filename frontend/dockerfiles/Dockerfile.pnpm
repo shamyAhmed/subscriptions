@@ -1,13 +1,4 @@
-from node:25
-
-shell ["/bin/bash", "-c"]
-
-arg PNPM_HOME="/pnpm"
-
-env PNPM_HOME=${PNPM_HOME}
-env PATH="$PNPM_HOME:$PATH"
-
-run wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+from node-with-pnpm:latest
 
 workdir /app
 

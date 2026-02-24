@@ -6,6 +6,8 @@ from werkzeug.security import generate_password_hash, check_password_hash;
 from application.utils import get_secret;
 
 class User(db.Model, BaseTimestamp):
+    __tablename__= "users";
+
     id: Mapped[int] = mapped_column(primary_key=True)
     first_name: Mapped[str]
     last_name: Mapped[str]
