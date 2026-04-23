@@ -4,7 +4,7 @@ from application.extensions import register_db;
 from application.utils import get_env, api_response;
 from application.commands import register_commands;
 from application.utils.logging_config import setup_logging;
-from blueprints import register_blueprints;
+# from blueprints import register_blueprints;
 
 def create_app(config=Config): 
     app = Flask(__name__);
@@ -15,7 +15,7 @@ def create_app(config=Config):
     register_commands(app);
     setup_logging(app);
 
-    register_blueprints(app);
+    # register_blueprints(app);
 
     def _is_auth_url(path):
         return path.startswith("/auth");
@@ -46,6 +46,6 @@ def create_app(config=Config):
 
     @app.route("/")
     def hello_world():
-        return "Hello test!!!!";
+        return "Hello test";
     
     return app;
