@@ -6,7 +6,7 @@ class LoginSchema(BaseSchema):
     password = fields.String(load_only=True, required=True)
 
 class RegisterSchema(LoginSchema):
-    id = fields.Number(dump_only=True)
+    id = fields.Integer(dump_only=True)
     password_confirm = fields.String(load_only=True, required=True)
     birth_date = fields.Date(required=True);
     first_name = fields.String(required=True);
@@ -15,7 +15,7 @@ class RegisterSchema(LoginSchema):
     updated_at = fields.DateTime(dump_only=True)
 
     @validates("password")
-    def validate_password(self, value):
+    def validate_password(self, value, data_key):
         errors = []
         if len(value) < 8:
             errors.append("password must be at least 8 characters")
@@ -29,7 +29,7 @@ class RegisterSchema(LoginSchema):
             raise ValidationError(errors)
 
     @validates("username")
-    def minimum(self, value):
+    def minimum(self, value, data_key):
         if(not value or len(value) < 8):
             raise ValidationError("username must be at least 8 characters");
 

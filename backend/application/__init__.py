@@ -1,10 +1,10 @@
-from flask import Flask, request;
+from flask import Flask, request, Blueprint;
 from application.config import Config;
 from application.extensions import register_db;
-from application.utils import get_env, api_response;
+from application.utils import api_response;
 from application.commands import register_commands;
 from application.utils.logging_config import setup_logging;
-# from blueprints import register_blueprints;
+from application.blueprints import register_blueprints;
 
 def create_app(config=Config): 
     app = Flask(__name__);
@@ -15,7 +15,16 @@ def create_app(config=Config):
     register_commands(app);
     setup_logging(app);
 
-    # register_blueprints(app);
+
+    # Registering Blueprints
+    prefix = Blueprint("api_v1", __name__, url_prefix="/api/v1");
+    register_blueprints(prefix);
+
+    @prefix.route("/")
+    def health_check():
+        return api_response({
+            "healthy": True
+        })
 
     def _is_auth_url(path):
         return path.startswith("/auth");
@@ -44,8 +53,6 @@ def create_app(config=Config):
         message = str(e) if app.debug else "An unexpected error occurred.";
         return api_response(error="Internal Server Error", status_code=500, message=message);
 
-    @app.route("/")
-    def hello_world():
-        return "Hello test";
     
+    app.register_blueprint(prefix);
     return app;

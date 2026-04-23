@@ -12,7 +12,7 @@ class User(db.Model, BaseTimestamp):
     first_name: Mapped[str]
     last_name: Mapped[str]
     birth_date: Mapped[date]
-    username = Mapped[str]
+    username: Mapped[str] = mapped_column(nullable=True)
     password_hash: Mapped[str] = mapped_column(init=False)
 
     def __init__(self, password, *args, **kwargs) -> None:
