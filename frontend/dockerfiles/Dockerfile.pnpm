@@ -1,5 +1,5 @@
-from node-with-pnpm:latest
+FROM node-with-pnpm
 
-workdir /app
+WORKDIR /app
 
-entrypoint ["pnpm"]
+ENTRYPOINT ["pnpm"]

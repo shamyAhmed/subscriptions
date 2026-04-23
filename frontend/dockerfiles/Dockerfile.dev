@@ -1,16 +1,16 @@
-from node-with-pnpm:latest
-shell ["/bin/bash", "-c"]
+FROM node-with-pnpm
+SHELL ["/bin/bash", "-c"]
 
-env VITE_PORT=3000
+ENV VITE_PORT=3000
 
-workdir /app
+WORKDIR /app
 
-copy package.json pnpm-lock.yaml .
+COPY package.json pnpm-lock.yaml /app/
 
-run pnpm install
+RUN pnpm install
 
-copy . .
+COPY . .
 
-expose 3000
+EXPOSE 3000
 
-cmd ["pnpm", "dev", "--host"]
+CMD ["pnpm", "dev", "--host"]
